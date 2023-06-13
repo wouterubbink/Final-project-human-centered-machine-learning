@@ -89,8 +89,10 @@ class LayerObjective(Objective):
         eval_layer = tf.keras.Model(inputs=i, outputs=o)
         self.layer_func = layer_func
         def func(image_batch):
+            
             layer_output = eval_layer(image_batch)
             value = self.layer_func(layer_output)
+            
             return value
         super().__init__(func, batch=batch)
         
